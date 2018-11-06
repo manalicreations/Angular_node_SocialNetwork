@@ -54,4 +54,11 @@ router.get('/isUserLoggedIn', async (req,res)=>{
 	else return res.json({status:false })
 });
 
+router.get('/test', async (req,res)=>{
+	if(req.query.email){
+		return res.json({status: req.session[req.query.email]? true : false })
+	}
+	else return res.json({status:false })
+});
+
 module.exports = router;
