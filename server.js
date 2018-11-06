@@ -5,7 +5,6 @@ const bodyparser = require('body-parser')
 const session = require('express-session')
 //const router = require('./api/apiRouter')
 const app = express();
-const morgan = require('morgan')
 app.use(bodyparser.json())
 app.use(morgan('dev'))
 app.use(session({
