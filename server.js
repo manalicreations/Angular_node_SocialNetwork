@@ -1,8 +1,25 @@
 //Install express server
 const express = require('express');
 const path = require('path');
+const bodyparser = require('body-parser')
+const session = require('express-session')
+const router = require('./api/apiRouter')
 
 const app = express();
+const morgan = require('morgan')
+app.use(bodyparser.json())
+app.use(morgan('dev'))
+app.use(session({
+    secret: 'ksjldklahshjsljksjkxshjchosjckspcgusjvghhdafhjsbjknsldjl',
+    saveUninitialized:true,
+    resave:false
+}))
+
+app.use(router);
+
+router.get('/test', async (req,res)=>{
+	return res.json({status: "true" })
+});
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/SocialNetwork'));

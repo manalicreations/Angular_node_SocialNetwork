@@ -1,4 +1,4 @@
-const User = require('../model/Users')
+//const User = require('../model/users')
 const express = require('express')
 const router = express.Router();
 
@@ -52,6 +52,10 @@ router.get('/isUserLoggedIn', async (req,res)=>{
 		return res.json({status: req.session[req.query.email]? true : false })
 	}
 	else return res.json({status:false })
+});
+
+router.get('/test', async (req,res)=>{
+	return res.json({status: "true" })
 });
 
 module.exports = router;
