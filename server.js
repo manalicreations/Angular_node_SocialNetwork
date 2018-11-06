@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyparser = require('body-parser')
 const session = require('express-session')
-const router = require('./api/apiRouter')
+//const router = require('./api/apiRouter')
 
 const app = express();
 const morgan = require('morgan')
@@ -15,15 +15,18 @@ app.use(session({
     resave:false
 }))
 
-app.use(router);
+//app.use(router);
 
-router.get('/test', async (req,res)=>{
+app.get('/test', async (req,res)=>{
 	return res.json({status: "true" })
 });
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/SocialNetwork'));
 
+/* router.get('/test', async (req,res)=>{
+	return res.json({status: "true" })
+}); */
 app.get('/*', function(req,res) {
     
 res.sendFile(path.join(__dirname+'/dist/SocialNetwork/index.html'));
