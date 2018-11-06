@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 
-/* const auth = require('./auth')
+const auth = require('./auth')
 const user = require('./user')
 const friend = require('./friend')
-const notification = require('./notification') */
+const notification = require('./notification')
 
 app.use('/api/auth', auth)
 app.use('/api/user', user)
