@@ -6,7 +6,7 @@ const session = require('express-session')
 //const router = require('./api/apiRouter')
 const app = express();
 app.use(bodyparser.json())
-app.use(morgan('dev'))
+//app.use(morgan('dev'))
 app.use(session({
     secret: 'ksjldklahshjsljksjkxshjchosjckspcgusjvghhdafhjsbjknsldjl',
     saveUninitialized:true,
