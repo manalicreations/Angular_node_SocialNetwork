@@ -1,0 +1,11 @@
+0.For generating libs
+>npm install everywhere package.json (LoginApp and server folder)
+
+1.For running angular:
+\LoginApp folder >npm start
+
+2.For running node.js server
+\LoginApp\src\server folder >node index.js
+
+3.For running mongo db
+>mongod in cmd

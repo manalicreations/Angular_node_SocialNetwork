@@ -1,0 +1,27 @@
+<app-header></app-header><!---------------- header-------------------- -->
+
+<div class="container-fluid text-center" >
+    <div class="row m-2">
+        <div class="col-sm-2 well border-right small d-none d-md-block" [appIfUserAlive]="userAlive"><!-- need hide -->
+            <app-detail></app-detail><!--  details----------------- -->
+
+        </div>
+        <div class="col-sm-8 well" >
+            
+            
+
+            <app-board ></app-board><!-- Board-------------------------------- -->
+        
+          </div>
+
+
+        <div class="col-sm-2 well border-left small d-none d-md-block" [appIfUserAlive]="userAlive"><!-- need hide -->
+           <app-chat></app-chat><!-- ----------chat------------- -->
+        </div>
+    </div>
+</div>
+
+<!-- <footer class="container-fluid text-center small" [appIfUserAlive]="userAlive">
+    <p>Footer Text</p>
+</footer>
+ -->

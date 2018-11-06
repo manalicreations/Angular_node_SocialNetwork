@@ -1,0 +1,10 @@
+use Angular6
+db.users.find()
+db.users.deleteMany({})
+
+use <db> -> to switch to that <db>
+show dbs -> to see all the dbs in you mongodb
+
+show collections -> to view all the collection in your db
+
+db.<collection>.find()	-> find all documents(records) in the collection(table)

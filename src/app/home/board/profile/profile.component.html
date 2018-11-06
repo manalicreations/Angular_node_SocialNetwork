@@ -1,0 +1,105 @@
+<div class="container">
+    <form ngNativeValidate #id [formGroup]="myForm">
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-6 col-form-label">Fisrt Name</label>
+            <div class="col-sm-6">
+                <label *ngIf="!isSave" for="staticEmail" class="col-sm-6 col-form-label">{{userDetails.fname}}</label>
+                <input *ngIf="isSave" type="text" class="form-control" formControlName="firstname" minlength="3"
+                    placeholder="Fisrt Name">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Last Name</label>
+            <div class="col-sm-6">
+                <label *ngIf="!isSave" for="inputPassword" class="col-sm-6 col-form-label">{{userDetails.lname}}</label>
+                <input *ngIf="isSave" type="text" class="form-control" formControlName="lastname" minlength="3"
+                    placeholder="Last Name">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <label *ngIf="!isSave" for="inputPassword" class="col-sm-6 col-form-label">{{userDetails.email}}</label>
+                <input *ngIf="isSave" type="email" class="form-control" formControlName="email" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="form-group row" *ngIf="isSave">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Password</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" formControlName="password" minlength="8"
+                    #pass placeholder="Password">
+            </div>
+        </div>
+
+        <div class="form-group row" *ngIf="isSave">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Confirm Password</label>
+            <div class="col-sm-6">
+                <label *ngIf="!isSave" for="inputPassword" class="col-sm-6 col-form-label">Confirm Password</label>
+                <input *ngIf="isSave" type="text" class="form-control" formControlName="confirmPassword" minlength="8"
+                    placeholder="Confirm Password">
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Phone No.</label>
+            <div class="col-sm-6">
+                <label *ngIf="!isSave" for="inputPassword" class="col-sm-6 col-form-label">{{userDetails.phone}}</label>
+                <input *ngIf="isSave" type="number" class="form-control" formControlName="number" pattern="(?=.*\d).{10}"
+                    placeholder="Phone No.">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-6 col-form-label">Gender</label>
+            <label *ngIf="!isSave" for="inputPassword" class="col-sm-6 col-form-label">{{userDetails.gender}}</label>
+            <div *ngIf="isSave" class="col-sm-6 align-item-left">
+                <div class="custom-control custom-radio">
+                    <div class="row">
+                        <div class="col">
+                            <input type="radio" class="custom-control-input" id="customControlValidation"
+                                formControlName="gender" value="Male">
+                            <label class="custom-control-label" for="customControlValidation">Male</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" class="custom-control-input" id="customControlValidation2"
+                                formControlName="gender" value="Female">
+                            <label class="custom-control-label" for="customControlValidation2">Female</label>
+                        </div>
+                        <div class="col">
+                            <input type="radio" class="custom-control-input" id="customControlValidation3"
+                                formControlName="gender" value="Transgender">
+                            <label class="custom-control-label" for="customControlValidation3">Transgender</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-6  col-form-label">Birthday</label>
+            <div class="col-sm-6">
+                <label *ngIf="!isSave" for="inputPassword" class="col-sm-6  col-form-label">{{userDetails.dob}}</label>
+                <input *ngIf="isSave" type="date" class="form-control" formControlName="birthday">
+            </div>
+        </div>
+
+        <div class="form-group row ">
+            <div class="col-sm-12">
+                <button *ngIf="isSave" (click)="update()" [disabled]="!myForm.valid" class="btn btn-md m-2">Save</button>
+                <button *ngIf="!isSave" (click)="changeSave()" class="btn btn-md m-2">Edit</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
