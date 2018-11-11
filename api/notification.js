@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-const Notification = require('../model/Notification')
+const Notification = require('../model/notification')
 
 router.get('/getInvites',async (req,res)=>{
     const email = req.query.email
