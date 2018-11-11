@@ -7,7 +7,6 @@ const router = require('./api/apiRouter')
 const methodOverride = require('method-override');
 
 const app = express()
-const morgan = require('morgan')
 app.use(bodyparser.json())
 app.use(methodOverride('_method'));
 app.use(bodyparser.json())
