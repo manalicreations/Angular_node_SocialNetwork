@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AuthService } from './service/auth.service';
-import { UserService } from './service/user.service'
+import { MessageService } from './service/message.service';
+import { UserService } from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { HeaderComponent } from './home/header/header.component';
-import { ChatComponent } from './home/chat/chat.component';
+import { ChatComponent } from './home/board/chat/chat.component';
 import { DetailComponent } from './home/detail/detail.component';
 import { BoardComponent } from './home/board/board.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +19,8 @@ import { FriendsComponent } from './home/board/friends/friends.component';
 import { MessagesComponent } from './home/board/messages/messages.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { Routing } from './app.route'
+import { Routing } from './app.route';
+import { OnlineComponent } from './home/online/online.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { Routing } from './app.route'
     IfUserAliveDirective,
     FilterPipe,
     FriendsComponent,
-    MessagesComponent
+    MessagesComponent,
+    OnlineComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { Routing } from './app.route'
     Routing
   ],
   //providers: [AuthService,UserService,AuthGuard],
-  providers: [AuthService,UserService],
+  providers: [AuthService,UserService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

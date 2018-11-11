@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './home/board/profile/profile.component';
 import { StatusComponent } from './home/board/status/status.component';
 import { AuthGuard } from './auth.guard';
+import { ChatComponent } from './home/board/chat/chat.component';
 
 const APP_ROUTES: Routes = [
     {
@@ -37,6 +38,11 @@ const APP_ROUTES: Routes = [
             {
                 path: 'profile',
                 component: ProfileComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'chat',
+                component: ChatComponent,
                 canActivate: [AuthGuard]
             },
         ],

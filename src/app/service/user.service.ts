@@ -2,20 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpParams } from '@angular/common/http'
 import { ReplaySubject } from '../../../node_modules/rxjs';
 
-interface user {
-    id:number,
-    fname: string,
-    lname: string,
-    email:string,
-    phone:number
-    gender:string,
-    dob:string
-  }
-interface res{
-    success:boolean,
-    message:string,
-    result:any
-}
+interface user {  id:number,  fname: string,  lname: string,  email:string,  phone:number,  gender:string,  dob:string,  profilePic:string}
+
+interface res{    success:boolean,    message:string,    result:any }
 
 
 @Injectable({
@@ -41,8 +30,8 @@ export class UserService {
         this.user.next(user)
     }
 
-    signUpUser(fname,lname, email, password, phone, gender, dob) {
-        return this.http.post<res>('/api/user/signup', {fname,lname, email, password, phone, gender, dob }, { observe: 'response' });
+    signUpUser(fname,lname, email, password, phone, gender, dob,profilePic) {
+        return this.http.post<res>('/api/user/signup', {fname,lname, email, password, phone, gender, dob,profilePic }, { observe: 'response' });
     }
 
     updateUser(fname,lname, email, password, phone, gender, dob){
@@ -86,9 +75,16 @@ export class UserService {
         return this.http.delete<res>('/api/friend/unfriend',{ observe: 'response', params:{myEmail:UserEmail,friendEmail:friendEmail}  });
     }
 
+    getAllStatus(){
+        return this.http.get<res>('/api/status/getAllStatus',{ observe: 'response'});
+    }
 
+    setStatus(status,userEmail){
+        return this.http.post<res>('/api/status/setStatus', {statusText:status, createrEmail:userEmail}, { observe: 'response' });
+    }
 
-
-
+    getProfilePic(email){
+        return this.http.get<res>('/api/user/getProfilePic',{ observe: 'response',params:{email:email}});
+    }
 
 }

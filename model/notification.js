@@ -1,4 +1,4 @@
-const mongoose = require('../module/Connection')
+const mongoose = require('../module/connection')
 
 const NotificationSchema = new mongoose.Schema({
     type:{type: String, required: true},

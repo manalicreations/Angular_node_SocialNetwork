@@ -11,6 +11,9 @@ import { UserService } from '../service/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  //username="saransh98@gmail.com";
+  //password="Password";
+
   constructor(private auth:AuthService,private router:Router,private user:UserService) { 
     
   }

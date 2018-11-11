@@ -1,4 +1,4 @@
-const mongoose = require('../module/Connection')
+const mongoose = require('../module/connection')
 const userSeq = require('mongoose-sequence') (mongoose)
 //const Notification = require('./Notification')
 
@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
 	phone:{type: String, required: true},
 	gender:{type: String, required: true},
 	dob:{type: String, required: true},
+	profilePic:{type: String, required: true},
 	friends:{type: Array, required: false}
 	//notification:{type: [Notification], required: false}
 }, function(err){

@@ -3,6 +3,9 @@ import { UserService } from '../../service/user.service';
 import { AuthService } from '../../service/auth.service';
 import { InteractionService } from 'src/app/service/interaction.service';
 
+interface user {  id:number,  fname: string,  lname: string,  email:string,  phone:number,  gender:string,  dob:string,  profilePic:string}
+
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -10,15 +13,7 @@ import { InteractionService } from 'src/app/service/interaction.service';
 })
 export class DetailComponent implements OnInit{
  
-  userDetails={
-    id:0,
-    fname: "",
-    lname: "",
-    email:"",
-    phone:0,
-    gender:"",
-    dob:""
-  }
+  userDetails:user
 
   recommendedUser=[]
   userAlive:string;
@@ -32,6 +27,7 @@ export class DetailComponent implements OnInit{
   }
   constructor(private user:UserService,private auth:AuthService,private interaction:InteractionService) { 
     this.refreshRecommendedList()
+    
   }
 
   refreshRecommendedList(){
