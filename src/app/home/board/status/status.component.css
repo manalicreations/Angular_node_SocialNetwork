@@ -1,0 +1,11 @@
+
+@media only screen and (max-width: 600px) {
+    .img-fluid{
+        width: 50%;
+    }
+}
+@media only screen and (min-width: 600px) {
+    .img-fluid{
+        max-width: 50%;
+    }
+}

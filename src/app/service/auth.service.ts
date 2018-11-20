@@ -22,6 +22,7 @@ interface isLoggedIn {
 interface res{
   success: boolean,
   message:string,
+  result:any,
   status:boolean
 }
 
@@ -50,6 +51,9 @@ export class AuthService {
     return this.http.delete<res>('api/auth/logout',{params:{email:username}});
   }
 
+  getOnlineUsers(){
+    return this.http.get<res>('api/auth/onlineUsers');
+  }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

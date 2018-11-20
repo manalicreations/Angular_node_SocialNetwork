@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 import { InteractionService } from 'src/app/service/interaction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friends',
@@ -12,7 +13,7 @@ export class FriendsComponent implements OnInit {
   inviteList = []
   friendList = []
 
-  constructor(private user: UserService,private interaction:InteractionService) { }
+  constructor(private user: UserService,private interaction:InteractionService,private router:Router) { }
 
   ngOnInit() {
     this.refreshList()
@@ -101,5 +102,9 @@ export class FriendsComponent implements OnInit {
   }
 
 
+  message(name,email){
+    this.interaction.setChatUserName({name,email})
+    this.router.navigate(['/home/chat'])
+  }
 
 }

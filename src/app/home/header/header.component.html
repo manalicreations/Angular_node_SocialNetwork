@@ -1,6 +1,4 @@
-
-
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color:rgb(240, 240, 240)">
+<nav class="navbar navbar-expand-md navbar-light" style="background-color:rgb(240, 240, 240)">
     <a class="navbar-brand" [routerLink]="['/home/status']">SaranshNetwork</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,6 +14,14 @@
             <li class="nav-item" *ngIf="userAlive">
                 <a class="nav-link" [routerLink]="['messages']">Message<span> </span><span class="badge badge-secondary badge-pill">5</span></a>
             </li>
+            
+            <li class="nav-item d-lg-none" *ngIf="userAlive" >
+                <a class="nav-link" [routerLink]="['/home/detail']">Details<span> </span><span class="badge badge-secondary badge-pill">5</span></a>
+            </li>
+
+            <li class="nav-item d-lg-none" *ngIf="userAlive" >
+                    <a class="nav-link" [routerLink]="['/home/online']">Online Users<span> </span><span class="badge badge-secondary badge-pill">5</span></a>
+            </li>
 
         </ul>
         <form class="form-inline my-2 my-lg-0" *ngIf="userAlive">
@@ -28,7 +34,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" [routerLink]="['profile']">Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" (click)="logout()" >Logout</a>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
                     </div>
                 </li>
             </ul>

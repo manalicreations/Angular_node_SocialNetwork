@@ -49,6 +49,8 @@ router.get('/getProfilePic', async (req, res)=>{			// get user with id
 	else return res.json({success: false, message: 'email did not recieved'})
 });
 
+
+
 /* exports.login = async (req,res)=>{		//login API
     const{email,password}=req.body
 	User.findOne({email},(function (err, result) {

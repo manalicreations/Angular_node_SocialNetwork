@@ -49,9 +49,11 @@ export class ChatComponent implements OnInit {
               email:data.body.result[st].creater.email,
               profilePic:img.body.result.profilePic
             })
+            console.log(this.messages)
           })
         }      
     })
+    
   }
 
   getProfilePic(){

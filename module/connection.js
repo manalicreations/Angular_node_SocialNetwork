@@ -2,7 +2,8 @@ const conn = require('mongoose')
 conn.Promise = Promise
 
 const mongoURI='mongodb://saransh98:saransh989@ds247101.mlab.com:47101/angular6'
-//conn.connect('mongodb://localhost:27017/Angular6', { useNewUrlParser: true })
+//const mongoURI='mongodb://localhost:27017/Angular6'
+
 conn.connect(mongoURI, { useNewUrlParser: true })
 
 conn.set('useCreateIndexs', true);

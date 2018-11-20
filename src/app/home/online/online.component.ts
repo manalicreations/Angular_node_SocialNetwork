@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-online',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnlineComponent implements OnInit {
 
-  constructor() { }
+  online=[]
+  offline=[]
+  
+
+  constructor(private auth:AuthService) {
+    auth.getOnlineUsers().subscribe(data=>{
+      for(let usr of data.result){
+        if(usr.status==="online") this.online.push(usr.name)
+        if(usr.status==="offline") this.offline.push(usr.name)
+      }
+      
+    })
+   }
 
   ngOnInit() {
   }
+  
 
 }

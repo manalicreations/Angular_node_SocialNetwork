@@ -3,17 +3,11 @@
 </p>
 <div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      User1
-      <span class="badge badge-primary badge-pill">14</span>
+    <li *ngFor="let usr of online" class="list-group-item align-items-center">
+      <span class="online">{{usr}}</span>
     </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        User1
-      <span class="badge badge-primary badge-pill">2</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        User1
-      <span class="badge badge-primary badge-pill">1</span>
+    <li *ngFor="let usr of offline" class="list-group-item align-items-center">
+      <span>{{usr}}</span>
     </li>
   </ul>
 </div>
