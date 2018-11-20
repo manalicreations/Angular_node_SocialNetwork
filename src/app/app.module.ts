@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { Routing } from './app.route';
 import { OnlineComponent } from './home/online/online.component'
+import { ImageCropperModule } from '../../node_modules/ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { OnlineComponent } from './home/online/online.component'
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    Routing
+    ImageCropperModule,
+    Routing,
   ],
   //providers: [AuthService,UserService,AuthGuard],
   providers: [AuthService,UserService,MessageService],

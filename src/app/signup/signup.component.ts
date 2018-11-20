@@ -4,6 +4,8 @@ import { AuthService } from '../service/auth.service';
 import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http'
+import { ImageCroppedEvent } from './image-cropper/image-cropper.component';
+
 
 interface res {
   success: boolean,
@@ -24,6 +26,10 @@ export class SignupComponent {
   selectedFile: File
   uploadValue: number
   uploadedImageName: string
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  cropperReady = false;
 
   constructor(private user: UserService,
     private auth: AuthService,
@@ -92,14 +98,14 @@ export class SignupComponent {
   onFileSelected(event) {
     this.selectedFile = event.target.files[0]
   }
+
   uploadFile() {
     this.uploadValue = 0
     const fd = new FormData();
 
     if (this.selectedFile !== undefined) {
-
-
-      fd.append('file', this.selectedFile, this.selectedFile.name)
+      fd.append('file', this.selectedFile)
+      //console.log(this.selectedFile)
       this.http.post<res>('/api/upload/uploadOneFile', fd, { reportProgress: true, observe: 'response' })
         .subscribe(data => {
 
@@ -111,7 +117,7 @@ export class SignupComponent {
           }
         });
 
-      let int=setInterval(() => {
+      let int = setInterval(() => {
         if (this.uploadValue < 100) {
           this.uploadValue = this.uploadValue + 1
         }
@@ -124,6 +130,18 @@ export class SignupComponent {
   }
 
 
-
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    this.selectedFile=Object.assign(event.file)
+  }
+  imageLoaded() {
+    this.cropperReady = true;
+  }
+  loadImageFailed() {
+    console.log('Load failed');
+  }
 
 }

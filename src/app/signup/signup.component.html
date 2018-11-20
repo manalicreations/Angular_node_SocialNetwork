@@ -85,14 +85,39 @@
     <div class="form-group row text-center">
       <label for="inputPassword" class="col-sm-6  col-form-label text-center">Profile Photo</label>
       <div class="col-sm-6">
-        <input style="display:none" type="file" (change)="onFileSelected($event)" #fileInput formControlName="profilePic">
+        <div>
+          <img *ngIf="uploadValue===0" [src]="croppedImage" />
+          
+          <div>
+            <image-cropper *ngIf="uploadValue===0"
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="3 / 4"
+                [resizeToWidth]="150"
+                [roundCropper]="false"
+                format="png"
+                outputType="both"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (loadImageFailed)="loadImageFailed()"
+                style="max-height: 33vh"
+                [style.display]="cropperReady ? null : 'none'"
+            ></image-cropper>
+          </div>
+          <input class="btn btn-md m-2" type="file" (change)="fileChangeEvent($event)" #fileInput formControlName="profilePic" hidden />
+        </div>
+        
         <button type="button" (click)="fileInput.click()" class="btn btn-md m-2">Pick File</button>
         <button type="button" (click)="uploadFile()" class="btn btn-md m-2">
           <span *ngIf="uploadValue===0">Upload</span>
           <span *ngIf="uploadValue===100">Uploaded Successfuly</span>
           <meter *ngIf="uploadValue!==0" value="{{uploadValue}}" min="0" max="100"></meter>
         </button>
-        <img *ngIf="uploadValue===100" class="img-fluid" src="/api/upload/image/{{uploadedImageName}}">
+        <div>
+            <img *ngIf="uploadValue===100" class="img-fluid" src="/api/upload/image/{{uploadedImageName}}">
+        </div>
+
+        
       </div>
     </div>
 
@@ -104,10 +129,9 @@
         <button type="button" [routerLink]="['/login']" class="btn btn-md m-2">Back to Home</button>
       </div>
     </div>
-
-
   </form>
-
-
-
 </div>
+
+
+
+

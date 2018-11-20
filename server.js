@@ -29,7 +29,7 @@ app.get('/login', async (req,res)=>{
 });
 // Start the app by listening on the default Heroku port
 app.use(router);
-app.listen(process.env.PORT || 8080,()=>console.log('Server started :)'));
+app.listen(process.env.PORT || 8080,()=>console.log('Server started :) at 8080'));
 
 
 
