@@ -22,22 +22,16 @@
     </div>
 </div>
 
+
 <div>
     <div class="row m-2 border shadow" *ngFor="let st of status">
-
-        <div class="col m-1 p-0 d-flex align-content-start">
-            <div class="text-left">
-                <img src="/api/upload/image/{{st.profilePic}}" class="img-fluid">
-                <div class="text-muted">saransh{{st.name}}</div>
+        <div class="col m-0 p-0">
+            <div class="image">
+                <img class="img-fluid" src="/api/upload/image/{{st.profilePic}}">
+                <div class="text-muted" style="font-size:13px">saransh{{st.name}}</div>
             </div>
-
-            <div class="col text-left m-auto">
-                <div class="status-pipe m-1"></div>
-                <div class="m-3">{{st.status}}</div>
-            </div>
-
-
+            <div class="status-pipe float-left m-1"></div>
+            <div class="content">{{st.status}}</div>
         </div>
-
     </div>
 </div>

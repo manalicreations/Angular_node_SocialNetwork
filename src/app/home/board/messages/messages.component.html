@@ -1,29 +1,16 @@
 <p class="lead text-muted">
     Messages
-    </p>
+</p>
 <div>
     <div class="row m-2 border shadow" *ngFor="let m of messages">
-
-        <div class="col-sm-1 m-1 p-0">
-            <div class="row m-0 p-0">
-                <div class="col m-0 p-0">
-                    <img src="/api/upload/image/{{m.profilePic}}"
-                        class="img-fluid" alt="Responsive image">
-                        <div class="text-muted" style="font-size:.9vw;">{{m.name}}</div>
-                </div>
+        <div class="col m-0 p-0">
+            <div class="image">
+                <img class="img-fluid" src="/api/upload/image/{{m.profilePic}}">
+                <div class="text-muted" style="font-size:13px">{{m.name}}</div>
             </div>
-
+            <div class="status-pipe float-left m-1"></div>
+            <div class="content">{{m.message}}</div>
         </div>
-        <div class="col-sm-10 m-1 p-0">
-            <div class="row h-100">
-                <div class="col text-left m-auto">
-                    <div class="status-pipe float-left m-1"></div>
-                    <div class="m-3">{{m.message}}</div>
-                </div>
-                <div class="col text-right m-auto">
-                    <button class="btn btn-light"(click)="reply(m.name,m.email)">Reply</button>
-                </div>
-            </div>
-        </div>
+        <div class="m-0 p-0 reply"><button class="btn btn-light m-2 but" (click)="reply(m.name,m.email)">Reply</button></div>
     </div>
 </div>

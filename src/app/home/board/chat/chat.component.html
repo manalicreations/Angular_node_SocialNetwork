@@ -1,7 +1,7 @@
 <p class="lead text-muted">
     Chat with {{username}}
 </p>
-
+<!-- 
 <div>
     <div class="row m-2 border" *ngFor="let m of messages">
 
@@ -9,7 +9,7 @@
             <div class="row m-0 p-0">
                 <div class="col m-0 p-0">
                     <img *ngIf="m.profilePic!=undefined" src="/api/upload/image/{{m.profilePic}}" class="img-fluid" alt="Responsive image">
-                    <div class="text-muted"  style="font-size:.9vw;">{{m.name}}</div>
+                    <div class="text-muted" style="font-size:.9vw;">{{m.name}}</div>
                 </div>
             </div>
 
@@ -18,7 +18,7 @@
             <div class="row h-100">
                 <div class="col text-left m-auto">
                     <div class="status-pipe float-left m-1"></div>
-                    <div class="m-3" >{{m.message}}</div>
+                    <div class="m-3">{{m.message}}</div>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-10">
-                        <input type="text" #statusMessage class="form-control" placeholder="Type your message">                      
+                        <input type="text" #statusMessage class="form-control" placeholder="Type your message">
                     </div>
                     <div class="form-group col-md-2">
                         <button class="btn btn-block" (click)="sendMessage(statusMessage.value)">Send</button>
@@ -39,4 +39,34 @@
         </div>
 
     </div>
+</div> -->
+
+
+<div>
+    <div class="row m-2 border shadow" *ngFor="let m of messages">
+        <div class="col m-0 p-0">
+            <div class="image">
+                <img *ngIf="m.profilePic!=undefined" src="/api/upload/image/{{m.profilePic}}" class="img-fluid" alt="Responsive image">
+                <div class="text-muted" style="font-size:13px">{{m.name}}</div>
+            </div>
+            <div class="status-pipe float-left m-1"></div>
+            <div class="content">{{m.message}}</div>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-sm-12">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <input type="text" #statusMessage class="form-control" placeholder="Type your message">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button class="btn btn-block" (click)="sendMessage(statusMessage.value)">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
 </div>

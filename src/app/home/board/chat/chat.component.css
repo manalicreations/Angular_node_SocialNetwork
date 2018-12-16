@@ -1,0 +1,27 @@
+.status-pipe{
+    border: 1px solid black;
+    height: 66px;
+    opacity: .1;
+    margin: 1px;
+}
+
+.img-fluid{
+    max-height: 70px;
+}
+
+.image{
+    float: left;
+}
+.content{
+    justify-content:start;
+    display: grid;
+    align-content: center;
+    height: 82px;
+}
+.reply{
+    display: grid;
+    justify-content: end;
+}
+.but{
+    border-radius: 50px;
+}

@@ -1,11 +1,28 @@
 
-@media only screen and (max-width: 600px) {
-    .img-fluid{
-        width: 50%;
-    }
+.status-pipe{
+    border: 1px solid black;
+    height: 66px;
+    opacity: .1;
+    margin: 1px;
 }
-@media only screen and (min-width: 600px) {
-    .img-fluid{
-        max-width: 50%;
-    }
+
+.img-fluid{
+    max-height: 70px;
+}
+
+.image{
+    float: left;
+}
+.content{
+    justify-content:start;
+    display: grid;
+    align-content: center;
+    height: 82px;
+}
+.reply{
+    display: grid;
+    justify-content: end;
+}
+.but{
+    border-radius: 50px;
 }
