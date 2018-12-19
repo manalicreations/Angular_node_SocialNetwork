@@ -25,3 +25,8 @@
 .but{
     border-radius: 50px;
 }
+
+#overlay{
+    overflow-y: scroll;
+    height: 80vh;
+}
