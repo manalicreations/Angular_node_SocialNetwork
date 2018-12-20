@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit {
         this.userEmail=data.email
       }
     })
-    this.socket = io('http://saranshnetwork.herokuapp.com');
+    this.socket = io();
   }
 
   ngOnInit() {
