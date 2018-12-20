@@ -11,6 +11,9 @@ app.use(bodyparser.json())
 app.use(methodOverride('_method'));
 app.use(bodyparser.json())
 
+var server= require('http').createServer(app);
+var io = require('socket.io').listen(server);
+
 app.use(session({
     secret: 'ksjldklahshjsljksjkxshjchosjckspcgusjvghhdafhjsbjknsldjl',
     saveUninitialized:true,
@@ -29,7 +32,27 @@ app.get('/login', async (req,res)=>{
 });
 // Start the app by listening on the default Heroku port
 app.use(router);
-app.listen(process.env.PORT || 8080,()=>console.log('Server started :) at 8080'));
 
+server.listen(process.env.PORT||8080);
+console.log('server running...at 8080');
+
+io.on('connection', (socket) => {
+
+    // Log whenever a user connects
+    console.log('socket connected');
+
+    // Log whenever a client disconnects from our websocket server
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+
+    // When we receive a 'message' event from our client, print out
+    // the contents of that message and then echo it back to our client
+    // using `io.emit()`
+    socket.on('newMessage', (message) => {
+        console.log("Order Received: " + message);
+        io.emit('newMessage', {text: message});    
+    });
+})
 
 
