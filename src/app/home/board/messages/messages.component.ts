@@ -26,7 +26,6 @@ export class MessagesComponent implements OnInit {
       if(data){
         this.userDetails=data
       }
-      
     })
    }
 
@@ -40,17 +39,15 @@ export class MessagesComponent implements OnInit {
       if(data.body.success)
         this.messages=[]
         for(let st in data.body.result){
-          this.user.getProfilePic(data.body.result[st].creater.email).subscribe(img=>{
-            
+          this.user.getProfilePic(data.body.result[st].creater.email).subscribe(img=>{          
             this.messages.push({
               name:data.body.result[st].creater.name,
               message:data.body.result[st].message,
               email:data.body.result[st].creater.email,
               profilePic:img.body.result.profilePic
             })
-          })
-          
-        }      
+          })     
+        } 
     })
   }
 

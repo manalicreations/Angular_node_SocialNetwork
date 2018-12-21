@@ -4,8 +4,6 @@ import { MessageService } from 'src/app/service/message.service';
 import { UserService } from 'src/app/service/user.service';
 import * as io from 'socket.io-client';
 
-interface reply {  name:string,  email: string}
-
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -18,15 +16,18 @@ export class ChatComponent implements OnInit {
   userEmail:string
   userData:any
   profilePic:string
+  sendingUser:string
   private socket;
 
   constructor(private int:InteractionService,private mess:MessageService,private user:UserService) { 
     this.user.userDetails.subscribe( data=>{
       if(data){
         this.userEmail=data.email
+        this.sendingUser=data.fname
       }
     })
-    this.socket = io();
+    this.socket = io(); //For production
+    //this.socket = io('http://localhost:1234');
   }
 
   ngOnInit() {
@@ -35,11 +36,25 @@ export class ChatComponent implements OnInit {
       this.username=this.userData.name
       this.messages=[]
       this.getChat()
-      
     }
 
     this.socket.on('newMessage', (data) => {     
-      this.getChat()
+      
+      let email=""
+      let profilePic=""
+      for(let ele of this.messages){
+          if(ele.name===data.text.name){
+            email=ele.email;
+            profilePic=ele.profilePic;
+            break;
+          }
+      }
+      this.messages.push({
+        name:data.text.name,
+        message:data.text.message,
+        email:email,
+        profilePic:profilePic
+      })
     })
     
   }
@@ -66,20 +81,10 @@ export class ChatComponent implements OnInit {
     })
     
   }
-
-  getProfilePic(){
-    this.user.getProfilePic("tst@gmail.com").subscribe(data=>{
-      if(data.body.success){
-        this.profilePic=data.body.result.profilePic
-      }
-    })
-  }
-
   sendMessage(message){
     this.mess.sendMessage(this.userEmail,this.userData.email,message).subscribe(data=>{
       if(data.body.success){
-        console.log(this.userData)
-        this.socket.emit('newMessage',message);
+        this.socket.emit('newMessage',{name:this.sendingUser,message});
       }
     })
 
